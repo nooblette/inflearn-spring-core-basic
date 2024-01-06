@@ -1,7 +1,6 @@
 package hello.inflearnspringcorebasic;
 
 import hello.inflearnspringcorebasic.discount.DiscountPolicy;
-import hello.inflearnspringcorebasic.discount.FixDiscountPolicy;
 import hello.inflearnspringcorebasic.discount.RateDiscountPolicy;
 import hello.inflearnspringcorebasic.member.MemberRepository;
 import hello.inflearnspringcorebasic.member.MemberService;
