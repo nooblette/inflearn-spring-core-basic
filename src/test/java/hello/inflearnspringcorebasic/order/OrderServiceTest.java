@@ -28,10 +28,10 @@ public class OrderServiceTest {
 
 		// when
 		memberService.join(member); // member 저장
-		Order order = orderService.createOrder(memberId, "itemA", 10000); // 주문 생성
+		Order order = orderService.createOrder(memberId, "itemA", 20000); // 주문 생성
 
 		// then
-		Assertions.assertThat(order.getDiscountPrice()).isEqualTo(1000); // 실제 할인 금액이 1000원인지 확인
+		Assertions.assertThat(order.getDiscountPrice()).isEqualTo(2000); // 실제 할인 금액이 1000원인지 확인
 
 	}
 
