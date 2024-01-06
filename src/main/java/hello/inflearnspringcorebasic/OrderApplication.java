@@ -3,15 +3,15 @@ package hello.inflearnspringcorebasic;
 import hello.inflearnspringcorebasic.member.Grade;
 import hello.inflearnspringcorebasic.member.Member;
 import hello.inflearnspringcorebasic.member.MemberService;
-import hello.inflearnspringcorebasic.member.MemberServiceImpl;
 import hello.inflearnspringcorebasic.order.OrderService;
 import hello.inflearnspringcorebasic.order.Order;
-import hello.inflearnspringcorebasic.order.OrderServiceImpl;
 
 public class OrderApplication {
 	public static void main(String[] args) {
-		MemberService memberService = new MemberServiceImpl();
-		OrderService orderService = new OrderServiceImpl();
+		AppConfig appConfig = new AppConfig();
+
+		MemberService memberService = appConfig.memberService();
+		OrderService orderService = appConfig.orderService();
 
 		Long memberId = 1L;
 		Member member = new Member(memberId, "nooblette", Grade.VIP);

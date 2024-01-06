@@ -1,1 +1,4 @@
 /spring-basic-v20231204/
+out/*
+.gradle/*
+build/*

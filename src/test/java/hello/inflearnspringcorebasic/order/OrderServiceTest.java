@@ -1,17 +1,24 @@
 package hello.inflearnspringcorebasic.order;
 
-import org.assertj.core.api.Assert;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import hello.inflearnspringcorebasic.AppConfig;
 import hello.inflearnspringcorebasic.member.Grade;
 import hello.inflearnspringcorebasic.member.Member;
 import hello.inflearnspringcorebasic.member.MemberService;
-import hello.inflearnspringcorebasic.member.MemberServiceImpl;
 
 public class OrderServiceTest {
-	MemberService memberService = new MemberServiceImpl();
-	OrderService orderService = new OrderServiceImpl();
+	MemberService memberService;
+	OrderService orderService;
+
+	@BeforeEach // 테스트를 수행하기 전에 무조건 수행할 로직을 작성
+	public void beforeEach(){
+		AppConfig appConfig = new AppConfig();
+		memberService = appConfig.memberService();
+		orderService = appConfig.orderService();
+	}
 
 	@Test
 	void createOrder(){
