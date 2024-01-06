@@ -1,5 +1,8 @@
 package hello.inflearnspringcorebasic;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
 import hello.inflearnspringcorebasic.member.Grade;
 import hello.inflearnspringcorebasic.member.Member;
 import hello.inflearnspringcorebasic.member.MemberService;
@@ -8,10 +11,10 @@ import hello.inflearnspringcorebasic.order.Order;
 
 public class OrderApplication {
 	public static void main(String[] args) {
-		AppConfig appConfig = new AppConfig();
+		ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
 
-		MemberService memberService = appConfig.memberService();
-		OrderService orderService = appConfig.orderService();
+		MemberService memberService = applicationContext.getBean("memberService", MemberService.class);
+		OrderService orderService = applicationContext.getBean("orderService", OrderService.class);
 
 		Long memberId = 1L;
 		Member member = new Member(memberId, "nooblette", Grade.VIP);
