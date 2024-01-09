@@ -27,6 +27,7 @@ public class AppConfig {
 		 * 객체 인스턴스의 참조(레퍼런스)를 생성자 주입(Injection) (= 생성자를 통해 구현 객체를 연결)
 		 * MemverServiceImpl -> MemoryMemberRepository
 		 */
+		System.out.println("call AppConfig.memberService");
 		return new MemberServiceImpl(memberRepository());
 	}
 
@@ -36,6 +37,7 @@ public class AppConfig {
 		 * 객체 인스턴스의 참조(레퍼런스)를 생성자 주입 (= 생성자를 통해 구현 객체를 연결)
 		 * OrderServiceImpl -> MemoryMemberRepository, FixDiscountPolicy
 		 * */
+		System.out.println("call AppConfig.orderService");
 		return new OrderServiceImpl(memberRepository(), discountPolicy());
 	}
 
@@ -44,6 +46,7 @@ public class AppConfig {
 	// MemberRepository 인터페이스의 구현 객체가 변경되더라도 createMemberRepository() 메서드만 수정하여 영향 범위를 줄일 수 있다.
 	@Bean
 	public MemberRepository memberRepository() {
+		System.out.println("call AppConfig.memberRepository");
 		return new MemoryMemberRepository();
 	}
 
