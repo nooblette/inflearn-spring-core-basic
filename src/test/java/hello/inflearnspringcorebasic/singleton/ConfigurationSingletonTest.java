@@ -32,4 +32,15 @@ public class ConfigurationSingletonTest {
 		assertThat(memberService.getMemberRepository()).isEqualTo(memberRepository);
 		assertThat(orderService.getMemberRepository()).isEqualTo(memberRepository);
 	}
+
+	@Test
+	@DisplayName("@Configuration 구현 로직을 확인한다.")
+	void configurationDeep(){
+		// AnnotationConfigApplicationContext 생성자는 매개변수로 받은 클래스(e.g. AppConfig.class)도 스프링 빈(Bean)으로 등록한다.
+		AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
+
+		AppConfig bean = applicationContext.getBean(AppConfig.class);
+
+		System.out.println("bean = " + bean.getClass());
+	}
 }
