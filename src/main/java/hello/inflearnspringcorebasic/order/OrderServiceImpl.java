@@ -1,9 +1,13 @@
 package hello.inflearnspringcorebasic.order;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import hello.inflearnspringcorebasic.discount.DiscountPolicy;
 import hello.inflearnspringcorebasic.member.Member;
 import hello.inflearnspringcorebasic.member.MemberRepository;
 
+@Component // 컴포넌트 스캔의 대상이 되어 자동으로 스프링 빈으로 등록
 public class OrderServiceImpl implements OrderService {
 	private final MemberRepository memberRepository;
 
@@ -20,6 +24,7 @@ public class OrderServiceImpl implements OrderService {
  	 */
 	private final DiscountPolicy discountPolicy;
 
+	@Autowired // MemberRepository와 DiscountPolicy 타입으로 정의된 스프링 빈을 찾아서 의존관계 자동 주입
 	public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
 		// OrderServiceImpl 클래스는 인터페이스인 MemberRepository 와 DiscountPolicy 에만 의존 (DIP 준수)
 		// 의존 중인 인터페이스의 구현 객체가 어떻게 되든 클라이언트인 OrderServiceImpl 클래스는 아무 영향을 받지 않는다 (OCP 준수)

@@ -1,8 +1,10 @@
 package hello.inflearnspringcorebasic.member;
 
-public class MemberServiceImpl implements MemberService{
-	MemberService memberService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component // 컴포넌트 스캔의 대상이 되어 자동으로 스프링 빈으로 등록
+public class MemberServiceImpl implements MemberService{
 	/**
 	 * 	OCP, DIP 위반
 	 *  - MemberServiceImpl 클래스는 추상화(MemberRepository)와 구현 클래스(MemoryMemberRepository)에 모두 의존하고 있다. (DIP 위반)
@@ -17,6 +19,7 @@ public class MemberServiceImpl implements MemberService{
 	private final MemberRepository memberRepository;
 
 	// 의존 관계를 외부에서 주입 (의존관계 주입, DI, Dependency Injection)
+	@Autowired // MemberRepository 타입으로 정의된 스프링 빈을 가져와서 자동으로 의존관계 주입
 	public MemberServiceImpl(MemberRepository memberRepository){
 		/**
 		 * MemberServiceImpl 클래스는 MemberRepository 인터페이스(추상화, 역할)에만 의존한다. (DIP 준수)
