@@ -8,7 +8,10 @@ import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import hello.inflearnspringcorebasic.AutoAppConfig;
+import hello.inflearnspringcorebasic.discount.DiscountPolicy;
+import hello.inflearnspringcorebasic.member.MemberRepository;
 import hello.inflearnspringcorebasic.member.MemberService;
+import hello.inflearnspringcorebasic.order.OrderServiceImpl;
 
 public class AutoAppConfigTest {
 	@Test
@@ -19,5 +22,11 @@ public class AutoAppConfigTest {
 
 		MemberService memberService = applicationContext.getBean(MemberService.class);
 		assertThat(memberService).isInstanceOf(MemberService.class);
+
+		OrderServiceImpl orderService = applicationContext.getBean("orderServiceImpl", OrderServiceImpl.class);
+		MemberRepository memberRepository = orderService.getMemberRepository();
+		DiscountPolicy discountPolicy = orderService.getDiscountPolicy();
+		System.out.println("memberRepository = " + memberRepository);
+		System.out.println("discountPolicy = " + discountPolicy);
 	}
 }

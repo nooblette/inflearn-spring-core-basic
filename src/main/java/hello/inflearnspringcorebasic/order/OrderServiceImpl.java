@@ -9,6 +9,7 @@ import hello.inflearnspringcorebasic.member.MemberRepository;
 
 @Component // 컴포넌트 스캔의 대상이 되어 자동으로 스프링 빈으로 등록
 public class OrderServiceImpl implements OrderService {
+	@Autowired
 	private MemberRepository memberRepository;
 
 	/**
@@ -22,29 +23,8 @@ public class OrderServiceImpl implements OrderService {
 	 * 	DIP를 준수하기 위해 인터페이스에만 의존하도록 코드를 변경
 	 * 	하지만 누군가(AppConfig.java)가 클라이언트인 OrderServiceImpl 클래스에 discountPolicy 인터페이스의 구현 객체를 대신 생성하고 넣어주어야 한다. (관심사의 분리)
  	 */
+	@Autowired
 	private DiscountPolicy discountPolicy;
-
-	@Autowired
-	public void setMemberRepository(MemberRepository memberRepository){
-		System.out.println("3. call Setter > memberRepository = " + memberRepository);
-		this.memberRepository = memberRepository;
-	}
-
-	@Autowired
-	public void setDiscountPolicy(DiscountPolicy discountPolicy){
-		System.out.println("2. call Setter > discountPolicy = " + discountPolicy);
-		this.discountPolicy = discountPolicy;
-	}
-	public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
-		System.out.println("1. OrderServiceImpl.OrderServiceImpl");
-		// OrderServiceImpl 클래스는 인터페이스인 MemberRepository 와 DiscountPolicy 에만 의존 (DIP 준수)
-		// 의존 중인 인터페이스의 구현 객체가 어떻게 되든 클라이언트인 OrderServiceImpl 클래스는 아무 영향을 받지 않는다 (OCP 준수)
-		//this.memberRepository = memberRepository;
-
-		// OrderServiceImpl 클래스는 순수한 DiscountPolicy 인터페이스에만 의존하며, 구현 객체(e.g. FixDiscountPolicy)에는 의존하지 않는다.(어떤 구현 객체가 상관 없다)
-		// OrderServiceImpl 클래스는 실행에만(discount() 메서드 호출) 집중할 수 있다.
-		//this.discountPolicy = discountPolicy;
-	}
 
 	@Override
 	public Order createOrder(Long memberId, String itemName, int itemPrice) {
@@ -61,4 +41,7 @@ public class OrderServiceImpl implements OrderService {
 	public MemberRepository getMemberRepository() {
 		return memberRepository;
 	}
+
+	public DiscountPolicy getDiscountPolicy() {
+		return discountPolicy;}
 }
