@@ -1,5 +1,6 @@
 package hello.inflearnspringcorebasic.order;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import hello.inflearnspringcorebasic.discount.DiscountPolicy;
@@ -25,9 +26,9 @@ public class OrderServiceImpl implements OrderService {
 
 	private final DiscountPolicy discountPolicy;
 
-	public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy rateDiscountPolicy) {
+	public OrderServiceImpl(MemberRepository memberRepository, @Qualifier("mainDiscountPolicy") DiscountPolicy discountPolicy) {
 		this.memberRepository = memberRepository;
-		this.discountPolicy = rateDiscountPolicy;
+		this.discountPolicy = discountPolicy;
 	}
 
 	@Override

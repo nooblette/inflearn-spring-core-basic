@@ -1,11 +1,13 @@
 package hello.inflearnspringcorebasic.discount;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import hello.inflearnspringcorebasic.member.Grade;
 import hello.inflearnspringcorebasic.member.Member;
 
 @Component
+@Qualifier("mainDiscountPolicy")
 public class RateDiscountPolicy implements DiscountPolicy{
 	private int discountPercent = 10;
 	@Override
