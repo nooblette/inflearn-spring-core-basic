@@ -5,8 +5,10 @@ import org.springframework.stereotype.Component;
 import hello.inflearnspringcorebasic.discount.DiscountPolicy;
 import hello.inflearnspringcorebasic.member.Member;
 import hello.inflearnspringcorebasic.member.MemberRepository;
+import lombok.RequiredArgsConstructor;
 
 @Component // 컴포넌트 스캔의 대상이 되어 자동으로 스프링 빈으로 등록
+@RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService {
 	private final MemberRepository memberRepository;
 
@@ -24,10 +26,6 @@ public class OrderServiceImpl implements OrderService {
 
 	private final DiscountPolicy discountPolicy;
 
-	public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy){
-		this.memberRepository = memberRepository;
-		this.discountPolicy = discountPolicy;
-	}
 	@Override
 	public Order createOrder(Long memberId, String itemName, int itemPrice) {
 		Member member = memberRepository.findById(memberId);
