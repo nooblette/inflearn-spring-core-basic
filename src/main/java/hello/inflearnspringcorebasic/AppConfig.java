@@ -38,7 +38,8 @@ public class AppConfig {
 		 * OrderServiceImpl -> MemoryMemberRepository, FixDiscountPolicy
 		 * */
 		System.out.println("call AppConfig.orderService");
-		return new OrderServiceImpl(memberRepository(), discountPolicy());
+		//return new OrderServiceImpl(memberRepository(), discountPolicy());
+		return null;
 	}
 
 	// command + option + m : 중복 코드 메서드 추출(리팩토링)

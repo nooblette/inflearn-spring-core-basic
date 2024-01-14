@@ -1,6 +1,5 @@
 package hello.inflearnspringcorebasic.order;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import hello.inflearnspringcorebasic.discount.DiscountPolicy;
