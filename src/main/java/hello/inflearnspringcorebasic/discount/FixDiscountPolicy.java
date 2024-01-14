@@ -1,8 +1,11 @@
 package hello.inflearnspringcorebasic.discount;
 
+import org.springframework.stereotype.Component;
+
 import hello.inflearnspringcorebasic.member.Grade;
 import hello.inflearnspringcorebasic.member.Member;
 
+@Component
 public class FixDiscountPolicy implements DiscountPolicy{
 	private int discountFixAmount = 1000; // 1000원 할인
 
