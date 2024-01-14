@@ -3,6 +3,7 @@ package hello.inflearnspringcorebasic.order;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
+import hello.inflearnspringcorebasic.annotation.MainDiscountPolicy;
 import hello.inflearnspringcorebasic.discount.DiscountPolicy;
 import hello.inflearnspringcorebasic.member.Member;
 import hello.inflearnspringcorebasic.member.MemberRepository;
@@ -26,7 +27,7 @@ public class OrderServiceImpl implements OrderService {
 
 	private final DiscountPolicy discountPolicy;
 
-	public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+	public OrderServiceImpl(MemberRepository memberRepository, @MainDiscountPolicy DiscountPolicy discountPolicy) {
 		this.memberRepository = memberRepository;
 		this.discountPolicy = discountPolicy;
 	}
