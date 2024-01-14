@@ -1,12 +1,9 @@
 package hello.inflearnspringcorebasic;
 
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
 
-import hello.inflearnspringcorebasic.member.MemberRepository;
-import hello.inflearnspringcorebasic.member.MemoryMemberRepository;
 
 @Configuration // 빈 설정 정보를 담는 클래스이므로 @Configuration 어노테이션 기입(누락하면 스프링 빈이 스프링 컨테이너에 등록되지 않고 싱글톤으로 생성되지 못한다.)
 @ComponentScan( // @Component 어노테이션이 붙은 클래스를 모두 찾아서 자동으로 스프링 빈으로 등록
@@ -17,8 +14,10 @@ import hello.inflearnspringcorebasic.member.MemoryMemberRepository;
 )
 public class AutoAppConfig {
 
+	/*
 	@Bean(name = "memoryMemberRepository")
 	MemberRepository memberRepository(){
 		return new MemoryMemberRepository();
 	}
+	*/
 }

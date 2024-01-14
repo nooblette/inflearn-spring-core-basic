@@ -9,7 +9,7 @@ import hello.inflearnspringcorebasic.member.MemberRepository;
 
 @Component // 컴포넌트 스캔의 대상이 되어 자동으로 스프링 빈으로 등록
 public class OrderServiceImpl implements OrderService {
-	private MemberRepository memberRepository;
+	private final MemberRepository memberRepository;
 
 	/**
 	 * 클라이언트인 OrderServiceImpl 클래스는 DiscountPolicy 인터페이스와 FixDiscountPolicy(구현 객체) 클래스에 직접적으로 의존 (DIP 위반)
@@ -23,10 +23,9 @@ public class OrderServiceImpl implements OrderService {
 	 * 	하지만 누군가(AppConfig.java)가 클라이언트인 OrderServiceImpl 클래스에 discountPolicy 인터페이스의 구현 객체를 대신 생성하고 넣어주어야 한다. (관심사의 분리)
  	 */
 
-	private DiscountPolicy discountPolicy;
+	private final DiscountPolicy discountPolicy;
 
-	@Autowired
-	public void init(MemberRepository memberRepository, DiscountPolicy discountPolicy){
+	public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy){
 		this.memberRepository = memberRepository;
 		this.discountPolicy = discountPolicy;
 	}
