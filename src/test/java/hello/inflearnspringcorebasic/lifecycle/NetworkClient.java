@@ -1,9 +1,7 @@
 package hello.inflearnspringcorebasic.lifecycle;
 
-import org.springframework.beans.factory.DisposableBean;
-import org.springframework.beans.factory.InitializingBean;
 
-public class NetworkClient implements InitializingBean, DisposableBean {
+public class NetworkClient {
 	private String url;
 
 	public NetworkClient() {
@@ -31,16 +29,14 @@ public class NetworkClient implements InitializingBean, DisposableBean {
 		System.out.println("close");
 	}
 
-	@Override
-	public void afterPropertiesSet() throws Exception {
-		System.out.println("\n빈 생성 및 의존관계 주입 후 NetworkClient.afterPropertiesSet() 호출");
+	public void init() throws Exception {
+		System.out.println("\n빈 생성 및 의존관계 주입 후 NetworkClient.init() 호출");
 		connect();
 		call("초기화 연결 메시지");
 	}
 
-	@Override
-	public void destroy() throws Exception {
-		System.out.println("\n스프링 종료 및 빈 소멸 전 NetworkClient.destroy() 호출");
+	public void close() throws Exception {
+		System.out.println("\n스프링 종료 및 빈 소멸 전 NetworkClient.close() 호출");
 		disconnect();
 	}
 }
