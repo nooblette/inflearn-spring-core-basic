@@ -1,5 +1,7 @@
 package hello.inflearnspringcorebasic.lifecycle;
 
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
 
 public class NetworkClient {
 	private String url;
@@ -29,12 +31,14 @@ public class NetworkClient {
 		System.out.println("close");
 	}
 
+	@PostConstruct
 	public void init() throws Exception {
 		System.out.println("\n빈 생성 및 의존관계 주입 후 NetworkClient.init() 호출");
 		connect();
 		call("초기화 연결 메시지");
 	}
 
+	@PreDestroy
 	public void close() throws Exception {
 		System.out.println("\n스프링 종료 및 빈 소멸 전 NetworkClient.close() 호출");
 		disconnect();
