@@ -3,6 +3,7 @@ package hello.inflearnspringcorebasic.common;
 import java.util.UUID;
 
 import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 
 import jakarta.annotation.PostConstruct;
@@ -10,7 +11,7 @@ import jakarta.annotation.PreDestroy;
 import lombok.Setter;
 
 @Component
-@Scope(value = "request") // MyLogger 빈은 http 요청 당 하나씩 생성되고 요청이 끝나는 시점에 소멸된다.
+@Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class MyLogger { // 로그를 출력하기 위한 클래스
 	private String uuid;
 
