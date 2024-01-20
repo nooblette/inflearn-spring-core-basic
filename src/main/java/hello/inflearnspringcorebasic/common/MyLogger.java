@@ -24,7 +24,7 @@ public class MyLogger { // 로그를 출력하기 위한 클래스
 	@PostConstruct // 빈이 생성되는 시점(빈 생성과 의존관계 주입 후 빈 사용 전)에 호출하는 초기화 메서드
 	public void init(){
 		// HTTP 요청 당 UUID가 하나씩 생성되므로, UUID를 저장해두면 다른 HTTP 요청과 구분할 수 있다.
-		String uuid = UUID.randomUUID().toString();
+		uuid = UUID.randomUUID().toString();
 		System.out.println("[" + uuid + "] request scope bean create: " + this);
 	}
 
