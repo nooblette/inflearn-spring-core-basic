@@ -3,3 +3,5 @@ out/*
 .gradle/*
 build/*
 .idea/*
+.DS_Store
+*.zip
